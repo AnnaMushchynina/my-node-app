@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mynodeapp
+    argocd-image-updater.argoproj.io/image-list: my-node-app=mynodeapp:v3
+    argocd-image-updater.argoproj.io/update-strategy: latest
 spec:
   replicas: 1
   selector:
@@ -17,3 +19,6 @@ spec:
         image: ammyacr.azurecr.io/mynodeapp:v1
         ports:
         - containerPort: 3000
+
+
+

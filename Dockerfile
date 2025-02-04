@@ -1,15 +1,7 @@
-# Використовуємо офіційний Node.js образ
-FROM node:14
-
-# Створюємо робочий каталог і копіюємо файли
+FROM node:18
 WORKDIR /usr/src/app
-COPY . .
-
-# Встановлюємо залежності
+COPY package*.json ./
 RUN npm install
-
-# Відкриваємо порт
+COPY . .
+CMD ["node", "server.js"]
 EXPOSE 3000
-
-# Запускаємо додаток
-CMD [ "node", "server.js" ]

@@ -1,13 +1,11 @@
-// server.js (оновлений)
-const http = require('http');
-const port = 3000;
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const requestHandler = (req, res) => {
-  res.end('<h1 style="color: blue;">Hello, World! (Updated)</h1>');
-};
+app.get('/', (req, res) => {
+    res.send('Hello from Kubernetes!');
+});
 
-const server = http.createServer(requestHandler);
-
-server.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
